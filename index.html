@@ -29,13 +29,20 @@
                 this.setState({numero:this.state.numero+1})
             }
 
+            menosUno(){
+                this.setState({numero:this.state.numero -1})
+            }
+
             render(){
                 return(
                     <div>
                         <h2> Hola desde componente React</h2>
                         <IntroducirTexto/>
-                        <AumentarNumero numero={this.state.numero}
+                        <h2>{this.state.numero}</h2>
+                        <AumentarNumero
                         funAumentar={this.masUno.bind(this)} />
+                        <br/>
+                        <DisminuirNumero funDisminuir={this.menosUno.bind(this)} />
                     </div>
                 ) ;
                   
@@ -49,6 +56,16 @@
                     <div>
                     <p>{this.props.numero}</p>
                     <button onClick={this.props.funAumentar}>Aumentar</button>
+                    </div>
+                );
+            }
+        }
+
+        class DisminuirNumero extends React.Component{
+            render(){
+                return(
+                    <div>
+                        <button onClick={this.props.funDisminuir} >Disminuir</button>
                     </div>
                 );
             }
